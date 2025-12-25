@@ -97,27 +97,45 @@ const AboutSection = () => {
                 }}
               />
 
-              {/* Main Image */}
-              <div className="relative z-10 rounded-2xl overflow-hidden border border-primary/30 glass-card shadow-[0_0_30px_rgba(0,229,255,0.2)]">
-                <img
-                  src={profilePlaceholder}
-                  alt="Abhishekh Dey"
-                  className="w-full aspect-[4/5] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-              </div>
+              {/* Main Image + Experience Badge */}
+<div className="relative z-10">
+  {/* Image Card */}
+  <div className="relative rounded-2xl overflow-hidden border border-primary/30 glass-card shadow-[0_0_30px_rgba(0,229,255,0.2)]">
+    <img
+      src={profilePlaceholder}
+      alt="Abhishekh Dey"
+      className="w-full aspect-[4/5] object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+  </div>
 
-
-              {/* Experience Badge */}
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.6, type: 'spring' }}
-                className="absolute -right-6 top-1/4 glass-card p-4 rounded-xl border border-primary/30 shadow-[0_0_20px_rgba(0,229,255,0.3)]"
-              >
-                <div className="text-3xl font-bold text-gradient">3+</div>
-                <div className="text-xs text-muted-foreground">Years of<br />Experience</div>
-              </motion.div>
+  {/* Experience Badge */}
+  <motion.div
+    initial={{ scale: 0, opacity: 0 }}
+    animate={isInView ? { scale: 1, opacity: 1 } : {}}
+    transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
+    className="
+      absolute 
+      -bottom-6 
+      -right-6 
+      z-20
+      glass-card 
+      px-4 
+      py-3 
+      rounded-xl 
+      border 
+      border-primary/30
+      shadow-[0_0_20px_rgba(0,229,255,0.35)]
+      backdrop-blur-md
+      hidden sm:block
+    "
+  >
+    <div className="text-3xl font-bold text-gradient">3+</div>
+    <div className="text-xs text-muted-foreground leading-tight">
+      Years of<br />Experience
+    </div>
+  </motion.div>
+</div>
             </div>
           </motion.div>
 

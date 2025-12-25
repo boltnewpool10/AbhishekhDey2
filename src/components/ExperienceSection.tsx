@@ -5,29 +5,20 @@ import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 
 const workExperience = [
   {
-    title: 'Team Leader',
+    title: 'Team Leader – Domains & Hosting Operations',
     company: 'Genpact',
     location: 'Hyderabad, India',
     period: 'October 2022 – Present',
-    description: 'Leading cross-functional development teams to deliver enterprise-grade solutions. Driving technical ownership of full-stack projects while mentoring junior developers and establishing coding standards.',
+    description: 'Leading high-performing customer support teams for the world\'s leading Domains and Hosting provider, with a strong focus on operational excellence, customer experience, and people development. Driving performance against critical KPIs, managing client expectations, and delivering data-driven insights through advanced reporting and analytics.',
     highlights: [
-      'Lead a team of 8+ developers across frontend and backend projects',
-      'Architected scalable microservices handling 1M+ daily transactions',
-      'Implemented CI/CD pipelines reducing deployment time by 60%',
-      'Mentored 5+ junior developers, promoting 2 to mid-level positions',
-    ],
-    type: 'work',
-  },
-  {
-    title: 'Senior Software Developer',
-    company: 'TechVista Solutions',
-    location: 'Hyderabad, India',
-    period: 'June 2020 – September 2022',
-    description: 'Developed and maintained full-stack web applications using React, Node.js, and cloud technologies. Collaborated with design teams to implement pixel-perfect UI components.',
-    highlights: [
-      'Built 15+ client-facing web applications from concept to deployment',
-      'Reduced application load time by 40% through optimization techniques',
-      'Integrated third-party APIs including Stripe, Twilio, and AWS services',
+      'Lead and manage a team of customer support specialists delivering best-in-class support for Domains and Hosting products',
+      'Drive key Customer Support KPIs including CSAT, FCR, AHT, QA scores, productivity, and SLA adherence',
+      'Design, build, and maintain performance dashboards using Tableau and Amazon QuickSight to provide actionable insights to leadership and clients',
+      'Partner closely with clients and internal stakeholders to manage expectations, communicate performance trends, and implement improvement strategies',
+      'Conduct quality audits, deep-dive analyses, and targeted interventions to improve agent performance and customer experience',
+      'Play a hands-on people management role, including coaching, mentoring, performance management, career development, and succession planning',
+      'Groom team members for growth through structured feedback, skill development plans, and leadership readiness initiatives',
+      'Drive continuous process improvement initiatives to enhance efficiency, accuracy, and customer satisfaction',
     ],
     type: 'work',
   },
@@ -35,28 +26,17 @@ const workExperience = [
 
 const education = [
   {
-    title: 'Master of Technology (M.Tech)',
-    company: 'Computer Science & Engineering',
-    location: 'JNTU Hyderabad',
-    period: '2018 – 2020',
-    description: 'Specialized in Software Engineering and Distributed Systems. Research focus on scalable web architectures and cloud computing patterns.',
-    highlights: [
-      'CGPA: 8.7/10 with distinction',
-      'Published research on microservices architecture optimization',
-      'Led the technical team for university hackathon events',
-    ],
-    type: 'education',
-  },
-  {
     title: 'Bachelor of Technology (B.Tech)',
     company: 'Computer Science & Engineering',
-    location: 'GITAM University',
+    location: 'Chandigarh University',
     period: '2014 – 2018',
     description: 'Strong foundation in computer science fundamentals, data structures, algorithms, and software development methodologies.',
     highlights: [
-      'First Class with Honours',
+      'Developed proficiency in full-stack web development, database management, and cloud technologies',
+      'Built strong analytical and problem-solving skills through hands-on projects and coursework',
       'Winner of inter-college coding competition (3 consecutive years)',
-      'Active member of IEEE Student Chapter',
+      'Active member of IEEE Student Chapter and technical societies',
+      'Cultivated expertise in software design patterns, system architecture, and agile methodologies',
     ],
     type: 'education',
   },

@@ -1,7 +1,14 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
+
+import genpactLogo from '../assets/logos/genpact.svg';
+import chandigarhUniversityLogo from '../assets/logos/chandigarh-university.svg';
+import opjsUniversityLogo from '../assets/logos/opjs-university.svg';
+
+/* -------------------------------------------------------------------------- */
+/*                                  DATA                                      */
+/* -------------------------------------------------------------------------- */
 
 const workExperience = [
   {
@@ -9,18 +16,18 @@ const workExperience = [
     company: 'Genpact',
     location: 'Hyderabad, India',
     period: 'October 2022 – Present',
-    description: 'Leading high-performing customer support teams for a leading Domains and Hosting provider, driving operational excellence, customer experience, and KPI management through data-driven insights.',
+    description:
+      'Leading high-performing customer support teams for a leading Domains and Hosting provider, driving operational excellence, customer experience, and KPI management through data-driven insights.',
     highlights: [
-      'Lead and manage a team of customer support specialists delivering best-in-class support for Domains and Hosting products',
-      'Drive key Customer Support KPIs including CSAT, FCR, AHT, QA scores, productivity, and SLA adherence',
-      'Design, build, and maintain performance dashboards using Tableau and Amazon QuickSight to provide actionable insights to leadership and clients',
-      'Partner closely with clients and internal stakeholders to manage expectations, communicate performance trends, and implement improvement strategies',
-      'Conduct quality audits, deep-dive analyses, and targeted interventions to improve agent performance and customer experience',
-      'Play a hands-on people management role, including coaching, mentoring, performance management, career development, and succession planning',
-      'Groom team members for growth through structured feedback, skill development plans, and leadership readiness initiatives',
-      'Drive continuous process improvement initiatives to enhance efficiency, accuracy, and customer satisfaction',
+      'Lead and manage customer support specialists for Domains & Hosting products',
+      'Drive CSAT, FCR, AHT, QA, SLA, and productivity metrics',
+      'Build dashboards using Tableau and Amazon QuickSight',
+      'Partner with clients and internal stakeholders for performance improvement',
+      'Conduct audits, deep-dive analysis, and coaching interventions',
+      'Mentor team members and groom future leaders',
     ],
-    type: 'work',
+    type: 'work' as const,
+    logo: genpactLogo,
   },
 ];
 
@@ -30,35 +37,40 @@ const education = [
     company: 'Computer Science & Engineering',
     location: 'Chandigarh University',
     period: '2018 – 2021',
-    description: 'Advanced coursework in computer science fundamentals, data structures, algorithms, and modern software development methodologies.',
+    description:
+      'Advanced coursework in computer science fundamentals, algorithms, and modern software development.',
     highlights: [
-      'Developed proficiency in full-stack web development, database management, and cloud technologies',
-      'Built strong analytical and problem-solving skills through hands-on projects and coursework',
-      'Founder of Cybersecurity Club, delivered 20+ sessions on Cybersecurity with 700+ active members',
-      'Google Developer Group Chandigarh and Meta Developer Circle Chandigarh member',
-      'Cultivated expertise in software design patterns, system architecture, and agile methodologies',
+      'Founder of Cybersecurity Club (700+ members)',
+      'Delivered 20+ cybersecurity sessions',
+      'Member of Google Developer Group & Meta Developer Circle',
+      'Strong foundation in system design and full-stack development',
     ],
-    type: 'education',
+    type: 'education' as const,
+    logo: chandigarhUniversityLogo,
   },
   {
     title: 'Polytechnic Diploma in Computer Science',
     company: 'Computer Science & Engineering',
     location: 'OPJS University',
     period: '2014 – 2017',
-    description: 'Comprehensive foundation in computer science principles, programming fundamentals, database design, and core IT infrastructure concepts.',
+    description:
+      'Built a strong foundation in programming, databases, networking, and software engineering.',
     highlights: [
-      'Mastered programming fundamentals and object-oriented design principles',
-      'Gained hands-on experience with database design and management systems',
-      'Developed strong problem-solving skills through practical coding assignments and projects',
-      'Acquired foundational knowledge in networking, systems design, and software development lifecycle',
-      'Built technical communication and teamwork skills through collaborative projects',
+      'Mastered programming fundamentals and OOP concepts',
+      'Hands-on experience with databases and system design',
+      'Developed strong analytical and problem-solving skills',
     ],
-    type: 'education',
+    type: 'education' as const,
+    logo: opjsUniversityLogo,
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*                              TIMELINE ITEM                                 */
+/* -------------------------------------------------------------------------- */
+
 interface TimelineItemProps {
-  item: typeof workExperience[0];
+  item: typeof workExperience[number] | typeof education[number];
   index: number;
   isInView: boolean;
 }
@@ -69,56 +81,91 @@ const TimelineItem = ({ item, index, isInView }: TimelineItemProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
       className="relative pl-16 pb-12 last:pb-0"
     >
       {/* Timeline Line */}
       <div className="timeline-line" />
-      
+
       {/* Timeline Dot */}
       <motion.div
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
-        transition={{ duration: 0.4, delay: index * 0.2 + 0.2, type: 'spring' }}
-        className={`absolute left-0 w-12 h-12 rounded-xl flex items-center justify-center ${
-          isWork ? 'bg-primary/20 border border-primary/30' : 'bg-secondary/20 border border-secondary/30'
-        }`}
+        transition={{ duration: 0.4, delay: index * 0.15 + 0.2, type: 'spring' }}
+        className={`absolute left-0 w-12 h-12 rounded-xl flex items-center justify-center
+          ${isWork
+            ? 'bg-primary/20 border border-primary/30'
+            : 'bg-secondary/20 border border-secondary/30'
+          }`}
       >
         <Icon className={isWork ? 'text-primary' : 'text-secondary'} size={20} />
       </motion.div>
 
       {/* Content Card */}
-      <div className="glass-card p-6 rounded-xl hover:border-primary/30 transition-all duration-300 group">
-        <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-          <div>
-            <h4 className="text-xl font-bold group-hover:text-gradient transition-colors">
-              {item.title}
-            </h4>
-            <p className="text-primary font-medium">{item.company}</p>
-          </div>
-          <div className="text-right text-sm text-muted-foreground flex items-center gap-3 justify-end flex-wrap">
-            <div className="flex items-center gap-1">
-              <Calendar size={14} />
-              <span>{item.period}</span>
-            </div>
-            <span>•</span>
-            <div className="flex items-center gap-1">
-              <MapPin size={14} />
-              <span>{item.location}</span>
-            </div>
-          </div>
-        </div>
+      <div className="glass-card p-6 rounded-xl transition-all duration-300 hover:border-primary/30 group">
+        {/* Header */}
+<div className="flex items-start gap-4 mb-4">
+  {/* Logo */}
+  <div
+    className={`h-16 w-16 rounded-xl bg-muted/30 border border-border
+    flex items-center justify-center
+    transition-all duration-300
+    ${isWork
+      ? 'group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.25)]'
+      : 'group-hover:border-secondary/50 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]'
+    }`}
+  >
+    <img
+      src={item.logo}
+      alt={`${item.company} logo`}
+      className="h-10 w-10 object-contain
+        grayscale opacity-80
+        transition-all duration-300
+        group-hover:grayscale-0
+        group-hover:opacity-100
+        group-hover:scale-105"
+    />
+  </div>
 
+  {/* Title + Meta */}
+  <div className="flex-1">
+    <h4 className="text-xl font-bold leading-snug">
+      {item.title}
+    </h4>
+
+    <p className="text-primary font-medium">
+      {item.company}
+    </p>
+
+    {/* Meta row */}
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-sm text-muted-foreground">
+      <div className="flex items-center gap-1">
+        <Calendar size={14} />
+        <span>{item.period}</span>
+      </div>
+
+      <div className="flex items-center gap-1">
+        <MapPin size={14} />
+        <span>{item.location}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        {/* Description */}
         <p className="text-muted-foreground mb-4">{item.description}</p>
 
+        {/* Highlights */}
         <ul className="space-y-2">
           {item.highlights.map((highlight, i) => (
             <li key={i} className="flex items-start gap-2 text-sm">
-              <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${
-                isWork ? 'bg-primary' : 'bg-secondary'
-              }`} />
+              <span
+                className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0
+                  ${isWork ? 'bg-primary' : 'bg-secondary'}`}
+              />
               <span>{highlight}</span>
             </li>
           ))}
@@ -128,6 +175,10 @@ const TimelineItem = ({ item, index, isInView }: TimelineItemProps) => {
   );
 };
 
+/* -------------------------------------------------------------------------- */
+/*                            EXPERIENCE SECTION                               */
+/* -------------------------------------------------------------------------- */
+
 const ExperienceSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -135,9 +186,9 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="section-padding relative">
       <div className="absolute inset-0 dot-pattern opacity-30" />
-      
-      <div className="container-custom relative z-10" ref={ref}>
-        {/* Section Header */}
+
+      <div ref={ref} className="container-custom relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -147,7 +198,7 @@ const ExperienceSection = () => {
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-mono mb-4">
             Journey
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Experience & <span className="text-gradient">Education</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -155,55 +206,43 @@ const ExperienceSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Work Experience */}
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Work */}
           <div>
-            <motion.h3
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-2xl font-bold mb-8 flex items-center gap-3"
-            >
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-primary/20 border border-primary/30 flex items-center justify-center">
                 <Briefcase className="text-primary" size={18} />
               </div>
               Work Experience
-            </motion.h3>
-            <div className="relative">
-              {workExperience.map((item, index) => (
-                <TimelineItem
-                  key={item.title}
-                  item={item}
-                  index={index}
-                  isInView={isInView}
-                />
-              ))}
-            </div>
+            </h3>
+
+            {workExperience.map((item, index) => (
+              <TimelineItem
+                key={item.title}
+                item={item}
+                index={index}
+                isInView={isInView}
+              />
+            ))}
           </div>
 
           {/* Education */}
           <div>
-            <motion.h3
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-2xl font-bold mb-8 flex items-center gap-3"
-            >
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-secondary/20 border border-secondary/30 flex items-center justify-center">
                 <GraduationCap className="text-secondary" size={18} />
               </div>
               Education
-            </motion.h3>
-            <div className="relative">
-              {education.map((item, index) => (
-                <TimelineItem
-                  key={item.title}
-                  item={item}
-                  index={index}
-                  isInView={isInView}
-                />
-              ))}
-            </div>
+            </h3>
+
+            {education.map((item, index) => (
+              <TimelineItem
+                key={item.title}
+                item={item}
+                index={index}
+                isInView={isInView}
+              />
+            ))}
           </div>
         </div>
       </div>

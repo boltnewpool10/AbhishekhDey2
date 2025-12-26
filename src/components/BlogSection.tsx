@@ -88,7 +88,7 @@ const BlogSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent md:hidden" />
                   
                   {/* Category Badge */}
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-secondary/20 backdrop-blur-sm text-xs font-mono text-secondary border border-secondary/30">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-secondary/20 backdrop-blur-sm text-xs font-mono text-white border border-secondary/30">
                     {post.category}
                   </span>
                 </div>

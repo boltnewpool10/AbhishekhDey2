@@ -9,7 +9,7 @@ const workExperience = [
     company: 'Genpact',
     location: 'Hyderabad, India',
     period: 'October 2022 – Present',
-    description: 'Leading high-performing customer support teams for the world\'s leading Domains and Hosting provider, with a strong focus on operational excellence, customer experience, and people development. Driving performance against critical KPIs, managing client expectations, and delivering data-driven insights through advanced reporting and analytics.',
+    description: 'Leading high-performing customer support teams for a leading Domains and Hosting provider, driving operational excellence, customer experience, and KPI management through data-driven insights.',
     highlights: [
       'Lead and manage a team of customer support specialists delivering best-in-class support for Domains and Hosting products',
       'Drive key Customer Support KPIs including CSAT, FCR, AHT, QA scores, productivity, and SLA adherence',
@@ -34,8 +34,8 @@ const education = [
     highlights: [
       'Developed proficiency in full-stack web development, database management, and cloud technologies',
       'Built strong analytical and problem-solving skills through hands-on projects and coursework',
-      'Winner of inter-college coding competition (3 consecutive years)',
-      'Active member of IEEE Student Chapter and technical societies',
+      'Founder of Cybersecurity Club, delivered 20+ sessions on Cybersecurity with 700+ active members',
+      'Google Developer Group Chandigarh and Meta Developer Circle Chandigarh member',
       'Cultivated expertise in software design patterns, system architecture, and agile methodologies',
     ],
     type: 'education',
@@ -83,12 +83,13 @@ const TimelineItem = ({ item, index, isInView }: TimelineItemProps) => {
             </h4>
             <p className="text-primary font-medium">{item.company}</p>
           </div>
-          <div className="text-right text-sm text-muted-foreground">
-            <div className="flex items-center gap-1 justify-end">
+          <div className="text-right text-sm text-muted-foreground flex items-center gap-3 justify-end flex-wrap">
+            <div className="flex items-center gap-1">
               <Calendar size={14} />
               <span>{item.period}</span>
             </div>
-            <div className="flex items-center gap-1 justify-end mt-1">
+            <span>•</span>
+            <div className="flex items-center gap-1">
               <MapPin size={14} />
               <span>{item.location}</span>
             </div>

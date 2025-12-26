@@ -1264,5 +1264,5 @@ Take your time understanding each component, and don't hesitate to experiment. H
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*
 *Documentation v2.0 - Comprehensive Guide for All Skill Levels*
